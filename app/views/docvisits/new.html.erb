@@ -5,10 +5,22 @@
     <%= f.label :name %>
     <%= f.text_field :name %>
 
-    <%= %>
+    <br><br>
 
-    <%= %>
+    <%= f.label :sex %>
+    <%= f.select(:sex, options_for_select([ "", "Male", "Female", "Prefer not to Disclose" ])) %>
 
-    <%=  %>
+    <br><br>
 
+    <%= f.label :date_of_birth %>
+    <%= f.date_select :date_of_birth%>
+    
+    <br><br>
+
+    <%= f.label :appointment_time %>
+    <%= f.date_select :appointment_time%>
+
+    <br><br>
+    
+    <%= f.submit %>
 <% end %>

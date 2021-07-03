@@ -21,7 +21,10 @@ ActiveRecord::Schema.define(version: 2021_07_03_154740) do
 
   create_table "docvisits", force: :cascade do |t|
     t.string "name"
-    t.datetime "appointment_date"
+    t.string "sex"
+    t.date "date_of_birth"
+    t.date "appointment_date"
+    t.time "appointment_time"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
