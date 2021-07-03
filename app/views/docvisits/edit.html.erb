@@ -1,4 +1,4 @@
-<h1> Create an Appointment! </h1>
+<h1> Edit Appointment Info! </h1>
 
 <%= form_for(@docvisit) do |f|%>
 
@@ -18,9 +18,9 @@
     <br><br>
 
     <%= f.label :appointment_time %>
-    <%= f.date_select :appointment_time %>
+    <%= f.date_select :appointment_time%>
 
     <br><br>
-
+    
     <%= f.submit %>
 <% end %>

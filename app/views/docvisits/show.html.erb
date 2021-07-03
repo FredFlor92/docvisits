@@ -2,6 +2,6 @@
 
 <p> <%= @docvisit.name%> is a <@docvisit.sex> and is schedule for <%= @docvisit.appointment_time%>
 </p>
-<%=%>
-<%=%>
+<%= link_to "Edit Doc App", edit_docvisit_path(@docvisit) %>
+<%= link_to "Delete Doc App", docvisit_path(@docvisit), method: :delete %>
 <%=%>

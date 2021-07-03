@@ -19,13 +19,35 @@ class DocvisitsController < ApplicationController
     end 
 
     def show
+       set_docvisit
+    end 
+
+    def edit 
+        set_docvisit
+    end
+
+    def update
+        set_docvisit
+        if @docvisit.update(docvisit_params)
+            redirect_to docvisit_path(@docvisit)
+        else 
+            render :edit
+        end   
+    end 
+
+    def destroy
+        set_docvisit
+        @docvisit.destroy
+        redirect_to docvisit_path 
+    end 
+    private
+
+    def set_docvisit
         @docvisit = Docvisit.find_by(id: params[:id])
         if !@docvisit
             redirect_to docvisits_path
         end 
     end 
-
-    private
 
     def docvisit_params
         params.require(docvisit).permit(:name, :sex, :date_of_birth, :appointment_time)
