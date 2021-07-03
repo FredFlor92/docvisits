@@ -1,0 +1,2 @@
+class Docvisit < ApplicationRecord
+end 
