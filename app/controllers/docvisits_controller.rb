@@ -1,15 +1,21 @@
 class DocvisitsController < ApplicationController
+    #before_action :check_for_if_logged_in, except: [:index]
 
     def new
+        if params[:doctor_id] && @doctor = Doctor.find_by_id(params[:doctor_id])
+        @doctor = docvisit.build_doctor
+        else
         @docvisit = Docvisit.new
+        end 
     end 
 
     def create
-        @docvisit = Docvisit.new(docvisit_params)
+        @docvisit = current_user.docvisits.build(docvisit_params)
 
         if @docvisit.save
             redirect_to docvisit_path(@docvisit)
         else
+            @docvisit.build_doctor unless @docvisit.doctor
             render :new
         end
     end 
@@ -50,7 +56,7 @@ class DocvisitsController < ApplicationController
     end 
 
     def docvisit_params
-        params.require(docvisit).permit(:name, :sex, :date_of_birth, :appointment_time)
+        params.require(docvisit).permit(:name, :password, )
     end 
 
 

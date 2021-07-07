@@ -8,7 +8,7 @@
     <br><br>
 
     <%= f.label :sex %>
-    <%= f.select(:sex, options_for_select([ "", "Male", "Female", "Prefer not to Disclose" ])) %>
+    <%= f.select(:sex, options_for_select([ "", "Male", "Female" ])) %>
 
     <br><br>
 
@@ -19,6 +19,11 @@
 
     <%= f.label :appointment_time %>
     <%= f.date_select :appointment_time %>
+
+    <br><br>
+
+    <%= f.label :doctor_id, "Select a Doctor" %>
+    <%= f.collection_select :doctor_id, Doctor.all, :id, :name, prompt: true %>
 
     <br><br>
 
