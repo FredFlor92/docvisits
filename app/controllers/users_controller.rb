@@ -1,6 +1,11 @@
 class UsersController < ApplicationController
-     #loading the signup form
-     def new
+    before_action :redirect_if_not_logged_in, only: [:index, :show]
+    before_action :logged_in_user, only: [:index, :show]
+    #loading the signup form
+    def index
+        @users = User.all
+    end 
+    def new
         @user = User.new
     end 
 
@@ -14,7 +19,7 @@ class UsersController < ApplicationController
         @user = User.new(user_params)
         if @user.save
             #login the user
-            session[:user_id] = @user.id
+            login @user
             redirect_to @user
         else
             render :new 
@@ -26,4 +31,13 @@ class UsersController < ApplicationController
     def user_params
         params.require(:user).permit(:username, :email, :password)
     end  
+
+    def redirect_if_not_logged_in
+        redirect_to login_url if !logged_in?
+    end
+
+    def logged_in_user
+        @user = User.find(params[:id])
+        redirect_to root_url if !is_current_user?(@user)
+    end 
 end
