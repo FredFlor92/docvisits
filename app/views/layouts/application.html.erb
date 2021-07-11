@@ -16,7 +16,7 @@
       <% if logged_in? %>
         <%= link_to 'Home', root_url %> |
         <%= link_to 'Profile', current_user %> |
-        <%= link_to 'All Users', users_path %> |
+        <%= link_to 'All Appointments', docvisits_path %> |
         <%= link_to 'Make Appointment', new_docvisit_path %> |
         <%= link_to 'Log out', logout_path, method: "delete" %> |
       <% else %>
