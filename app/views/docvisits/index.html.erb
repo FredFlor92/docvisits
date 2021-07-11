@@ -1,27 +1,2 @@
 <h1> All the Appointments! </h1>
 
-<%= form_tag("/docvisits", method: 'get') do %>
-    <%= label_tag(:sex, "Enter the Sex you want to see")%>
-    <%= text_field_tag(:sex) %>
-    <%= submit_tag("Search") %>
-<% end %>
-
-<h3> Females: </h3>
-<%= @docvisits.females.each.do |docvisit| %>
-    <p><%= link_to docvisit.name, docvisit_path(docvisit) %> - <%= docvisit.sex%> 
-    - person: <%= docvisit.user.try(:username) %> - doctor: <%= docvisit.doctor.try(:username)  %></p>
-<% end %>
-
-<h3> Males: </h3>
-<%= @docvisits.males.each.do |docvisit| %>
-    <p><%= link_to docvisit.name, docvisit_path(docvisit) %> - <%= docvisit.sex%> 
-    - person: <%= docvisit.user.try(:username) %> - doctor: <%= docvisit.doctor.try(:username) %></p>
-<% end %>
-
-<% if @docvisits.empty? %>
-
-    <h2>No visits scheduled yet. Book a new visit <%= link_to "here", new_docvisit_path%></h2>
- <% else %>
-    <%= render partial: :docvisits, locals: {docvisits: @docvisits} %>
-
-<% end %>
