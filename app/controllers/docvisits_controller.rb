@@ -56,7 +56,7 @@ class DocvisitsController < ApplicationController
     end 
 
     def docvisit_params
-        params.require(docvisit).permit(:name, :password, )
+        params.require(:docvisit).permit(:name, :sex, :date_of_birth, :appointment_time, :appointment_date, :doctor_id, doctor_attributes: [:name, :location, :specialty])
     end 
 
 

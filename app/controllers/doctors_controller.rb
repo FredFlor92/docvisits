@@ -1,7 +1,7 @@
 class DoctorsController < ApplicationController
 
   def index
-    @doctors = Doctor.all.includes(:ordered_docvisits, :users)
+    @doctors = Doctor.all
   end
 
   def show

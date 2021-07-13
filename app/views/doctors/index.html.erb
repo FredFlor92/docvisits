@@ -2,8 +2,8 @@
 
  <% @doctors.each do |doctor| %>
     <li>
-        <%= link_to doctor.name, dcotor_path(doctor) %>
-        <%= dcotor.location %>
+        <%= link_to doctor.name, doctor_path(doctor) %>
+        <%= doctor.location %>
         specialty: <%= doctor.specialty %> -
     </li>
 <% end %>
